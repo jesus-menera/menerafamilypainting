@@ -31,12 +31,13 @@ plugins:
   - jekyll-feed
   - jekyll-coffeescript
 
-
 defaults:
   - scope:
       path: "assets/img"
     values:
       image: true
+
+keep_files: [validate.min.map]
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
