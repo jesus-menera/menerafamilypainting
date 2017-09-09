@@ -2,7 +2,7 @@
 {% assign itemRef =  site.data[page.showcase-base][page.showcase-category][page.showcase-item-category][page.showcase-item-name] %}
 
 {% assign resolutions = itemRef.resolutions %}
-{% capture imgDir %}/assets/img/{{ page.showcase-item-name }}/{%endcapture%}
+{% capture imgDir %}{{"/assets/img/" | relative_url }}{{ page.showcase-item-name }}/{%endcapture%}
 {% assign  name = page.showcase-item-name %}
 {% assign count = itemRef.pictures | size | minus: 1 %}
 {% assign pictures = itemRef.pictures %}
