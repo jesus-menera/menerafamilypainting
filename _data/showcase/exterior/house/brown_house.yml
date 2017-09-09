@@ -1,0 +1,16 @@
+resolutions:
+  - size: 320
+    ext: jpg
+  - size: 484
+    ext: jpg
+pictures:
+  - refID: 3
+  - refID: 4
+  - refID: 6
+  - refID: 7
+  - refID: 8
+  - refID: 9
+  - refID: 10
+  - refID: 12
+  - refID: 13
+  - refID: 14

@@ -1,7 +1,7 @@
 ---
 layout: showcase
 title: Showcase/ Exterior / Brown House
-permalink: /showcase/exterior/brown_house
+permalink: /showcase/exterior/brown_house_try
 showcase-base: "showcase"
 showcase-category: "exterior"
 showcase-item-category: "house"

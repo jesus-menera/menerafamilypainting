@@ -3,9 +3,9 @@ items:
     url: /contact
   - title: showcase
     subdir:
-      - title: Residential Interior
+      - title: Interior
         url: showcase/Residential_interior
-      - title: Residential Exterior
+      - title: Exterior
         url: showcase/Residential_Exterior
-      - title: Cabinet Refinishing
+      - title: Cabinets
         url: showcase/Cabinets

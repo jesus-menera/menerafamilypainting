@@ -2,13 +2,16 @@
 layout: default
 ---
 <article class="post">
-
-  <header class="post-header">
-    <label class="post-title">{{ page.title | escape }}</label>
-  </header>
-
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-2">
+          <header class="post-header">
+            <label class="post-title">{{ page.title | escape }}</label>
+          </header>
+        </div>
+      </div>
+  </div>
   <div class="post-content">
     {{ content }}
   </div>
-
 </article>

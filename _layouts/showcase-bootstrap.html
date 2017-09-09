@@ -1,0 +1,67 @@
+---
+layout: showcase
+---
+{{page.resolutions}}
+{{page.dir}}
+{{page.name}}
+
+{% assign resolutions = site.data.showcase.exterior.house.brown_house.resolutions %}
+{% assign imgDir = "/assets/img/brown_house/" %}
+{% assign  name = "brown_house" %}
+<div id="carousel-example-generic" class="carousel" data-ride="carousel">
+    <div class="row">
+		<div class="col-sm-offset-6 col-sm-3">
+			<ol class="carousel-indicators">
+                {% assign count = site.data.showcase.exterior.house.brown_house.pic_count | minus: 1 %}
+                {% for i in (0 .. count) %}
+                <li 
+                    data-target="#carousel-example-generic" data-slide-to="{{ i }}" 
+                    {% if i == 0 %}
+                        class="active"
+                    {% endif %}
+                >
+                </li>
+                {% endfor %}
+			</ol>
+		</div>
+    </div>
+    <div class="row">
+		<div class="col-sm-offset-4 col-sm-5">
+			<div class="carousel-inner" role="listbox">
+                {% for picture in site.data.showcase.exterior.house.brown_house.pictures %}
+                    {% capture resizedPic %}{{imgDir}}{{name}}-resized{{picture.refID}}{% endcapture %}
+                        {% capture srcset %}
+                        {% for res in resolutions %}
+                            {% capture picWithRes %}{{ resizedPic | strip }}-{{ res.size }}w.{{res.ext}} {{res.size}}w{% endcapture %}
+                            {% if forloop.index < forloop.length %}
+                                {{ picWithRes | append:"," }}
+                            {% else %}
+                                {{ picWithRes }}
+                            {% endif %}
+                        {% endfor %}
+                        {% endcapture %}    
+                    {% capture defaultPic %}{{ resizedPic|strip }}-{{resolutions[0].size}}w.{{resolutions[0].ext}}{% endcapture %}
+                    <div
+                        {% if forloop.index  == 1 %}
+                            class="item active"
+                        {% else %}
+                            class="item"
+                        {% endif %}
+                    >
+                        <img
+                            srcset="{{srcset | strip }}"
+                            sizes="(max-width: 320px) 320px, (min-width: 321px) 484px"
+                            src="{{ defaultPic }}"
+                            alt="{{forloop.index | minus: 1 }}"
+                        >
+                    {% if picture.desc %}
+                        <div class="carousel-caption">
+                            {{picture.desc}}
+                        </div>
+                    {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        <div>
+    </div>
+</div>

@@ -1,13 +1,17 @@
 ---
 ---
 
-@import "{{ site.theme }}";
 @import "header";
 @import "menu";
 @import "footer";
 @import "color_pallette";
 @import "form_style";
 body {
-  background-color: rgba(243, 243, 243, 0.85);
+  background-color: rgba(247, 247, 247, 0.61);
   height: 80vh;
+}
+
+
+.alert {
+  display: none;
 }
