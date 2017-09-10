@@ -34,3 +34,35 @@
     background-color: black;
   }
 }
+.controls {
+  position: absolute;
+  height: 100%;
+  width: 93%;
+  margin-left: 0;
+  top: 0px;
+  & > div {
+    height: 100%;
+  }
+  .carousel-btn {
+    position: relative;
+    height: 100%;
+    .left-control {
+      height: 100%;
+      margin-left:0;
+    }
+    .right-control {
+      height: 100%;  
+      float: right;
+      a {
+        float: right;
+      }
+    }
+    a {
+      font-size: 45px;
+      color: white;
+    }
+  }
+}
+.pics {
+  padding:0;
+}

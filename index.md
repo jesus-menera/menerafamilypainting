@@ -36,9 +36,4 @@ Big or Small, we paint it all: Minor touch-ups, front door repaint, individual r
 Primarily, we are a father and son operation. This means that we start and finish every job ourselves. This makes us different. In the past with other companies, a common complaint that we came across was the uncertainty that comes with the introduction of new people to a project. 
 
 
-
-
-
-
-
 Together we have 25 years of work experience. 

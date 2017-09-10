@@ -1,11 +1,8 @@
 
 {% assign itemRef =  site.data[page.showcase-base][page.showcase-category][page.showcase-item-category][page.showcase-item-name] %}
 
-{% assign resolutions = itemRef.resolutions %}
-{% capture imgDir %}{{"/assets/img/" | relative_url }}{{ page.showcase-item-name }}/{%endcapture%}
 {% assign  name = page.showcase-item-name %}
 {% assign count = itemRef.pictures | size | minus: 1 %}
-{% assign pictures = itemRef.pictures %}
 
 <div id="carousel-example-generic" class="carousel" data-ride="carousel">
         <div class="row">
@@ -23,43 +20,58 @@
                 </ol>
             </div>
         </div>
-        <div class="row">
+        <div class="row pics">
             <div class="col-sm-offset-4 col-sm-5">
                 <div class="carousel-inner" role="listbox">
-                    {% for picture in pictures %}
-                        {% capture resizedPic %}{{imgDir}}{{name}}-resized{{picture.refID}}{% endcapture %}
-                            {% capture srcset %}
-                            {% for res in resolutions %}
-                                {% capture picWithRes %}{{ resizedPic | strip }}-{{ res.size }}w.{{res.ext}} {{res.size}}w{% endcapture %}
-                                {% if forloop.index < forloop.length %}
-                                    {{ picWithRes | append:"," }}
-                                {% else %}
-                                    {{ picWithRes }}
-                                {% endif %}
-                            {% endfor %}
-                            {% endcapture %}    
-                        {% capture defaultPic %}{{ resizedPic|strip }}-{{resolutions[0].size}}w.{{resolutions[0].ext}}{% endcapture %}
-                        <div
-                            {% if forloop.index  == 1 %}
+                    {% assign google-link = site.data.google_hosted_img%}
+                    {% assign imageSet = itemRef %}
+                    {%for picture in imageSet.pictures%}
+
+                    <div    {% if forloop.index  == 1 %} 
                                 class="item active"
                             {% else %}
                                 class="item"
                             {% endif %}
-                        >
-                            <img
-                                srcset="{{srcset | strip }}"
-                                sizes="(max-width: 320px) 320px, (min-width: 321px) 484px"
-                                src="{{ defaultPic }}"
-                                alt="{{forloop.index | minus: 1 }}"
-                            >
-                        {% if picture.desc %}
-                            <div class="carousel-caption">
-                                {{picture.desc}}
-                            </div>
+                    >
+
+                      {%capture resizedPicSet%}
+                      {%for resolution in google-link.resolutions %}
+                        {%assign loopCount = forloop.length | minus:1%}
+                        {% if forloop.index < forloop.length %}
+                          {%capture resizedImage %}{{google-link.base}}{{imageSet.hosted_on_google_photo[picture.refID]|strip}}{{google-link.resolutionsAvailable[resolution.size]}}{%endcapture%}        
+                          {{resizedImage}} {{resolution.size}}{%if forloop.index < loopCount%},{%endif%}    
+                        {% else %}
+                          {%capture default %}{{google-link.base}}{{imageSet.hosted_on_google_photo[picture.refID]|strip}}{{google-link.resolutionsAvailable[resolution.size]}}{%endcapture%}        
                         {% endif %}
-                        </div>
+                      {% endfor %}
+                      {%endcapture%}
+                      {%capture img_on_google_photo %}{{google-link.base}}{{imageSet.hosted_on_google_photo[picture.refID]|strip}}{{google-link.resolutionsAvailable["320w"]}}{%endcapture%}
+                        <img    srcset="{{resizedPicSet | strip}}"
+                                sizes="(max-width: 320px) 320px, (min-width: 321px, max-width: 484px) 484px, (min-width: 485px) 575px"
+                                src="{{default}}"
+                                alt="{{forloop.index | minus: 1 }}"
+                        >
+                    </div>
                     {% endfor %}
+                </div>
+                <div class="row controls">
+                    <div class="col-sm-12">
+                        <div class="row carousel-btn">
+                            <div class="left-control col-sm-3">
+                                <a class="" href="#carousel-example-generic" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </div>
+                            <div class="right-control col-sm-3 col-sm-offset-6">
+                                <a class="" href="#carousel-example-generic" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                             </div>
+                        </div>
+                    </div>
                 </div>
             <div>
         </div>
-    </div>
+</div>

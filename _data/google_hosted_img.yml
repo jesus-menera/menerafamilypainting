@@ -1,0 +1,11 @@
+base: https://lh3.googleusercontent.com/ 
+resolutions:
+  - size: 320w
+  - size: 484w
+  - size: 575w
+  - size: full
+resolutionsAvailable:
+  484w: =w484-h645-no?.jpg
+  320w: =w320-h427-no?.jpg
+  575w: =w575-h767-no?.jpg
+  full: =w937-h1249-no?.jpg
