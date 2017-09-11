@@ -5,21 +5,6 @@
 {% assign count = itemRef.pictures | size | minus: 1 %}
 
 <div id="carousel-example-generic" class="carousel" data-ride="carousel">
-        <div class="row">
-            <div class="col-sm-offset-6 col-sm-3">
-                <ol class="carousel-indicators">
-                    {% for i in (0 .. count) %}
-                    <li 
-                        data-target="#carousel-example-generic" data-slide-to="{{ i }}" 
-                        {% if i == 0 %}
-                            class="active"
-                        {% endif %}
-                    >
-                    </li>
-                    {% endfor %}
-                </ol>
-            </div>
-        </div>
         <div class="row pics">
             <div class="col-sm-offset-4 col-sm-5">
                 <div class="carousel-inner" role="listbox">
@@ -56,6 +41,21 @@
                 </div>
                 <div class="row controls">
                     <div class="col-sm-12">
+                            <div class="row">
+                                    <div class="col-sm-offset-6 col-sm-6">
+                                        <ol class="carousel-indicators">
+                                            {% for i in (0 .. count) %}
+                                            <li 
+                                                data-target="#carousel-example-generic" data-slide-to="{{ i }}" 
+                                                {% if i == 0 %}
+                                                    class="active"
+                                                {% endif %}
+                                            >
+                                            </li>
+                                            {% endfor %}
+                                        </ol>
+                                    </div>
+                                </div>
                         <div class="row carousel-btn">
                             <div class="left-control col-sm-3">
                                 <a class="" href="#carousel-example-generic" role="button" data-slide="prev">
